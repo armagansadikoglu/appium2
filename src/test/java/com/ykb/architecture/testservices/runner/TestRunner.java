@@ -14,8 +14,7 @@ import org.testng.annotations.Test;
         monochrome = true,
         tags = "",
         features = "src/test/resources/features",
-        glue = "com.ykb.architecture.testservices",
-        publish = true
+        glue = "com.ykb.architecture.testservices"
 )
 public class TestRunner extends BaseRunner {
     private TestNGCucumberRunner testNGCucumberRunner;

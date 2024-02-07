@@ -1,4 +1,4 @@
-package com.ykb.architecture.testservices.pages.android;
+package com.ykb.architecture.testservices.pages;
 
 import com.ykb.architecture.testservices.BaseTest;
 import com.ykb.architecture.testservices.utilities.ThreadLocalDriver;
@@ -8,35 +8,43 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumElementLocatorFactory;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.Reporter;
 
+import java.time.Duration;
+
 
 public class HomePage extends BaseTest {
-    AppiumDriver driver;
 
+    @AndroidFindBy(accessibility = "Preference")
+    WebElement preferences;
+
+    @AndroidFindBy(accessibility = "Views")
+    WebElement views;
+
+    AppiumDriver driver;
+    String os;
 
     public HomePage(AppiumDriver driver) {
         this.driver = driver;
-
+        os = ThreadLocalDriver.getTlOs();
+        PageFactory.initElements(new AppiumFieldDecorator(driver, Duration.ofSeconds(20)), this);
     }
 
-    public void demo() {
-        String os = ThreadLocalDriver.getTlOs();
+    public void clickOnPreference() {
+
         if (os.equalsIgnoreCase("android")){
+            preferences.click();
 
         }
-        driver.findElement(AppiumBy.accessibilityId("Preference")).click();
-        driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"3. Preference dependencies\"]")).click();
-        driver.findElement(By.id("android:id/checkbox")).click();
-        driver.findElement(By.xpath("//android.widget.TextView[@text='WiFi settings']")).click();
-        driver.findElement(By.id("android:id/edit")).sendKeys("Armağan");
-        String alertTitle = driver.findElement(By.id("android:id/alertTitle")).getText();
-        Assert.assertEquals(alertTitle,"WiFi settings");
-        driver.findElement(By.xpath("//*[@text='OK']")).click();
+
     }
 
     public void longPress() {
@@ -94,14 +102,18 @@ public class HomePage extends BaseTest {
     }
 
     public void browser() {
-        String os = ThreadLocalDriver.getTlOs();
+
         if (os.equalsIgnoreCase("android")){
-            driver.get("https://www.rahulshettyacademy.com/angularAppdemo/");
+            driver.get("https://www.google.com");
             WebElement searchBox = driver.findElement(By.cssSelector("[name='q']"));
             searchBox.sendKeys("Hello");
             searchBox.sendKeys(Keys.ENTER);
             ((AndroidDriver)driver).pressKey(new KeyEvent(AndroidKey.BACK));
         }
 
+    }
+
+    public void clickOnViews() {
+        views.click();
     }
 }

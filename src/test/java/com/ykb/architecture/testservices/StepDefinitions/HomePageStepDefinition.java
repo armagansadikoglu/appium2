@@ -1,9 +1,8 @@
-package com.ykb.architecture.testservices.StepDefinitions.android;
+package com.ykb.architecture.testservices.StepDefinitions;
 
 
-import com.ykb.architecture.testservices.pages.android.HomePage;
+import com.ykb.architecture.testservices.pages.HomePage;
 import com.ykb.architecture.testservices.utilities.ThreadLocalDriver;
-import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.Given;
 
 
@@ -12,15 +11,8 @@ public class HomePageStepDefinition  {
 
     HomePage homePage;
 
-
     public HomePageStepDefinition() {
         homePage = new HomePage(ThreadLocalDriver.getTLDriver());
-    }
-
-
-    @Given("deneme")
-    public void demo(){
-        homePage.demo();
     }
 
     @Given("longpress")
@@ -41,5 +33,15 @@ public class HomePageStepDefinition  {
     @Given("browser")
     public void browser() {
         homePage.browser();
+    }
+
+    @Given("click on preference at Home Page")
+    public void clickOnPreferenceAtHomePage() {
+        homePage.clickOnPreference();
+    }
+
+    @Given("click on views at Home Page")
+    public void clickOnViewsAtHomePage() {
+        homePage.clickOnViews();
     }
 }
