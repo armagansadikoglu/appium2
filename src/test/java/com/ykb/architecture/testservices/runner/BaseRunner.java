@@ -20,7 +20,7 @@ public class BaseRunner {
     @BeforeMethod
     @Parameters({ "udid", "platformVersion","os" })
     public void setup(@Optional(value = "emulator-5554") String udid, @Optional(value = "12") String platformVersion, @Optional(value = "android") String os) throws IOException {
-        DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(udid, platformVersion);
+        DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(udid, platformVersion, os);
         //ThreadLocalDriver.setTLDriver(new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps));
         if (os.equalsIgnoreCase("android")){
             ThreadLocalDriver.setTLDriver(new AndroidDriver(new URL("http://127.0.0.1:4723"), caps),os);

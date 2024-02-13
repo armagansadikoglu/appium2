@@ -116,4 +116,22 @@ public class HomePage extends BaseTest {
     public void clickOnViews() {
         views.click();
     }
+
+    public void iosDeneme() {
+        driver.findElement(AppiumBy.accessibilityId("Alert Views")).click();
+        // Xpath slow on iOS, use iOSClassChain or iOSnSPredicateString
+        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeStaticText[`name == \"Text Entry\"`]")).click();
+        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeTextField")).sendKeys("Hello World");
+        // rahul driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeCell")).sendKeys("Hello World");
+        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeButton[`name == \"OK\"`]")).click();
+
+        // iosPredicateString
+        driver.findElement(AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == \"Confirm / Cancel\" ")).click();
+        // diğer yazım şekilleri [c] -> case sensitive
+        // driver.findElement(AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value BEGINSWITH[c] 'Confirm' ")).click();
+        // driver.findElement(AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value ENDSWITH[c] 'Cancel' ")).click();
+        String text = driver.findElement(AppiumBy.iOSNsPredicateString("value BEGINSWITH 'A message' and type == 'XCUIElementTypeStaticText' ")).getText();
+        Assert.assertEquals(text,"A message should be a short, complete sentence.");
+        driver.findElement(AppiumBy.accessibilityId("Confirm")).click();
+    }
 }

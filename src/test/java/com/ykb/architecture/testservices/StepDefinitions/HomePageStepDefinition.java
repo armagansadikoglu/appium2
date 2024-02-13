@@ -44,4 +44,9 @@ public class HomePageStepDefinition  {
     public void clickOnViewsAtHomePage() {
         homePage.clickOnViews();
     }
+
+    @Given("ios")
+    public void ios() {
+        homePage.iosDeneme();
+    }
 }

@@ -19,5 +19,13 @@
             <class name="com.ykb.architecture.testservices.runner.TestRunner"/>
         </classes>
     </test>
+    <test name="15 pro">
+        <parameter name="udid" value="C445549B-1695-4121-A017-C48DD9147BA7"/>
+        <parameter name="platformVersion" value="17.0"/>
+        <parameter name="os" value="ios"/>
+        <classes>
+            <class name="com.ykb.architecture.testservices.runner.TestRunner"/>
+        </classes>
+    </test>
 
 </suite>
