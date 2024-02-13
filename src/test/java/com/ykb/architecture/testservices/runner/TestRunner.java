@@ -18,7 +18,8 @@ import java.util.List;
         monochrome = true,
         tags = "",
         features = "src/test/resources/features",
-        glue = "com.ykb.architecture.testservices"
+        glue = "com.ykb.architecture.testservices",
+        plugin = {"pretty","json:target/test-report/${artifactId}-${env.code}-${pkg.version.buildNumber}.json"}
 )
 
 public class TestRunner extends BaseRunner {

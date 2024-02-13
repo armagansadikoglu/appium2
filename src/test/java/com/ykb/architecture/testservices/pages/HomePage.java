@@ -11,6 +11,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumElementLocatorFactory;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -29,6 +30,23 @@ public class HomePage extends BaseTest {
     @AndroidFindBy(accessibility = "Views")
     WebElement views;
 
+    @iOSXCUITFindBy(accessibility = "Alert Views")
+            WebElement alertViews;
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeTextField")
+    WebElement typeTextField;
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeButton[`name == \"OK\"`]")
+    WebElement buttonOK;
+    @iOSXCUITFindBy(iOSClassChain = "**/XCUIElementTypeStaticText[`name == \"Text Entry\"`]")
+            WebElement textEntry;
+
+    @iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND name == \"Confirm / Cancel\" ")
+            WebElement confirmCancelButton;
+
+    @iOSXCUITFindBy(iOSNsPredicate = "value BEGINSWITH 'A message' and type == 'XCUIElementTypeStaticText' ")
+    WebElement message;
+
+    @iOSXCUITFindBy(accessibility = "Confirm")
+            WebElement confirmButton;
     AppiumDriver driver;
     String os;
 
@@ -118,20 +136,20 @@ public class HomePage extends BaseTest {
     }
 
     public void iosDeneme() {
-        driver.findElement(AppiumBy.accessibilityId("Alert Views")).click();
+       alertViews.click();
         // Xpath slow on iOS, use iOSClassChain or iOSnSPredicateString
-        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeStaticText[`name == \"Text Entry\"`]")).click();
-        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeTextField")).sendKeys("Hello World");
+        textEntry.click();
+        typeTextField.sendKeys("Hello World");
         // rahul driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeCell")).sendKeys("Hello World");
-        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeButton[`name == \"OK\"`]")).click();
+        buttonOK.click();
 
         // iosPredicateString
-        driver.findElement(AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND name == \"Confirm / Cancel\" ")).click();
+confirmCancelButton.click();
         // diğer yazım şekilleri [c] -> case sensitive
         // driver.findElement(AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value BEGINSWITH[c] 'Confirm' ")).click();
         // driver.findElement(AppiumBy.iOSNsPredicateString("type == 'XCUIElementTypeStaticText' AND value ENDSWITH[c] 'Cancel' ")).click();
-        String text = driver.findElement(AppiumBy.iOSNsPredicateString("value BEGINSWITH 'A message' and type == 'XCUIElementTypeStaticText' ")).getText();
+        String text = message.getText();
         Assert.assertEquals(text,"A message should be a short, complete sentence.");
-        driver.findElement(AppiumBy.accessibilityId("Confirm")).click();
+        confirmButton.click();
     }
 }

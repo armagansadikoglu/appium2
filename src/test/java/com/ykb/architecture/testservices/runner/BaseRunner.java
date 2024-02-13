@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -19,9 +20,17 @@ public class BaseRunner {
 
     @BeforeMethod
     @Parameters({ "udid", "platformVersion","os" })
-    public void setup(@Optional(value = "emulator-5554") String udid, @Optional(value = "12") String platformVersion, @Optional(value = "android") String os) throws IOException {
-        DesiredCapabilities caps = desiredCapabilitiesUtil.getDesiredCapabilities(udid, platformVersion, os);
-        //ThreadLocalDriver.setTLDriver(new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps));
+    public void setup(@Optional() String udid, @Optional()String platformVersion, @Optional(value = "android") String os) throws IOException {
+        DesiredCapabilities caps;
+        if (Objects.isNull(udid) && Objects.isNull(platformVersion)){
+            caps = desiredCapabilitiesUtil.getDesiredCapabilities(os);
+        } else if (Objects.isNull(udid)) {
+            caps = desiredCapabilitiesUtil.getDesiredCapabilities(platformVersion,os);
+        } else  {
+            caps = desiredCapabilitiesUtil.getDesiredCapabilities(udid, platformVersion, os);
+
+        }
+       //ThreadLocalDriver.setTLDriver(new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps));
         if (os.equalsIgnoreCase("android")){
             ThreadLocalDriver.setTLDriver(new AndroidDriver(new URL("http://127.0.0.1:4723"), caps),os);
         }else{
