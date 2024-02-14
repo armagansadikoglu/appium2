@@ -2,13 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Appium-Test-Suite" parallel="tests" thread-count="3">
-
   <test name="emulator-5554">
         <parameter name="udid" value="emulator-5554"/>
         <parameter name="platformVersion" value="12"/>
         <parameter name="os" value="android"/>
         <classes>
-            <class name="com.ykb.architecture.testservices.runner.TestRunner"/>
+            <class name="com.ykb.architecture.testservices.runner.AndroidRunner"/>
         </classes>
     </test>
     <test name="emulator-5556">
@@ -16,7 +15,7 @@
         <parameter name="platformVersion" value="13"/>
         <parameter name="os" value="android"/>
         <classes>
-            <class name="com.ykb.architecture.testservices.runner.TestRunner"/>
+            <class name="com.ykb.architecture.testservices.runner.AndroidRunner"/>
         </classes>
     </test>
     <test name="15 pro">
@@ -24,14 +23,14 @@
         <parameter name="platformVersion" value="17.0"/>
         <parameter name="os" value="ios"/>
         <classes>
-            <class name="com.ykb.architecture.testservices.runner.TestRunner"/>
+            <class name="com.ykb.architecture.testservices.runner.iOSRunner"/>
         </classes>
     </test>
     <!--
     <test name="herhangi bir android">
         <parameter name="os" value="android"/>
         <classes>
-            <class name="com.ykb.architecture.testservices.runner.TestRunner"/>
+            <class name="com.ykb.architecture.testservices.runner.iOSRunner"/>
         </classes>
     </test>
 
@@ -39,7 +38,7 @@
         <parameter name="os" value="android"/>
         <parameter name="platformVersion" value="10"/>
         <classes>
-            <class name="com.ykb.architecture.testservices.runner.TestRunner"/>
+            <class name="com.ykb.architecture.testservices.runner.iOSRunner"/>
         </classes>
     </test>
  -->
