@@ -27,7 +27,7 @@ public class HomePage extends BaseTest {
     @AndroidFindBy(accessibility = "Preference")
     WebElement preferences;
 
-    @AndroidFindBy(accessibility = "Views")
+    @AndroidFindBy(accessibility = "Viewsaa")
     WebElement views;
 
     @iOSXCUITFindBy(accessibility = "Alert Views")

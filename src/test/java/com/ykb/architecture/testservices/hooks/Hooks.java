@@ -32,9 +32,9 @@ public class Hooks {
         byte[] screenshotAs;
         try {
             screenshotAs = ThreadLocalDriver.getTLDriver().getScreenshotAs(OutputType.BYTES);
-            File screenshotAs1 = ThreadLocalDriver.getTLDriver().getScreenshotAs(OutputType.FILE);
-            File targetFile=new File(System.getProperty("user.dir")+"/demo.jpg");
-            FileUtils.copyFile(screenshotAs1,targetFile);
+            //File screenshotAs1 = ThreadLocalDriver.getTLDriver().getScreenshotAs(OutputType.FILE);
+            //File targetFile=new File(System.getProperty("user.dir")+"/demo.jpg");
+            //FileUtils.copyFile(screenshotAs1,targetFile);
 
         }catch (Exception e){
             throw new RuntimeException(e);
