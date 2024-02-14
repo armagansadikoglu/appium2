@@ -17,9 +17,19 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BaseTest {
 
+    public void iosTouchAndHold(WebElement element, AppiumDriver driver){
+
+            Map<String, Object> params = new HashMap<>();
+            params.put("element",((RemoteWebElement)element).getId());
+            params.put("duration", 5);
+            driver.executeScript("mobile:touchAndHold",params);
+
+    }
 
     public void longPressAction(WebElement element, AppiumDriver driver){
         //https://github.com/appium/appium-uiautomator2-driver/blob/master/docs/android-mobile-gestures.md

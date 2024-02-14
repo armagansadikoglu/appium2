@@ -18,3 +18,13 @@ Feature: Login Feature
   @ios
   Scenario: ios
     Given ios
+
+  @ios
+  Scenario: ios touch and hold
+    Given ios touch and hold
+
+  @ios
+  Scenario: ios slide
+    Given ios slide
+
+

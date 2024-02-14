@@ -49,4 +49,14 @@ public class HomePageStepDefinition  {
     public void ios() {
         homePage.iosDeneme();
     }
+
+    @Given("ios touch and hold")
+    public void iosTouchAndHold() {
+        homePage.iosTouchAndHold();
+    }
+
+    @Given("ios slide")
+    public void iosSlide() {
+        homePage.iosSlide();
+    }
 }

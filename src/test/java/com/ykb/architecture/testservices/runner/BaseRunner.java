@@ -1,5 +1,6 @@
 package com.ykb.architecture.testservices.runner;
 
+import com.ykb.architecture.testservices.config.SutConfiguration;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import java.io.IOException;
@@ -32,9 +33,9 @@ public class BaseRunner {
         }
        //ThreadLocalDriver.setTLDriver(new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps));
         if (os.equalsIgnoreCase("android")){
-            ThreadLocalDriver.setTLDriver(new AndroidDriver(new URL("http://127.0.0.1:4723"), caps),os);
+            ThreadLocalDriver.setTLDriver(new AndroidDriver(new URL(SutConfiguration.getProps().getProperty("appium.url")), caps),os);
         }else{
-            ThreadLocalDriver.setTLDriver(new IOSDriver(new URL("http://127.0.0.1:4723"), caps),os);
+            ThreadLocalDriver.setTLDriver(new IOSDriver(new URL(SutConfiguration.getProps().getProperty("appium.url")), caps),os);
         }
 
     }

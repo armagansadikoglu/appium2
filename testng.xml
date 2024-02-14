@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="IsinOlsun-Android-Test-Suite" parallel="tests" thread-count="3">
+<suite name="Appium-Test-Suite" parallel="tests" thread-count="3">
 
   <test name="emulator-5554">
         <parameter name="udid" value="emulator-5554"/>

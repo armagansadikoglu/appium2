@@ -152,4 +152,29 @@ confirmCancelButton.click();
         Assert.assertEquals(text,"A message should be a short, complete sentence.");
         confirmButton.click();
     }
+
+    public void iosTouchAndHold() {
+        driver.findElement(AppiumBy.accessibilityId("Steppers")).click();
+        WebElement thirdIncrementButton = driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeButton[`name == \"Increment\"`][3]"));
+        // long press
+        iosTouchAndHold(thirdIncrementButton,driver);
+    }
+
+    public void iosSlide() {
+        driver.findElement(AppiumBy.accessibilityId("Sliders")).click();
+        // send keys ile 1 gönderirsen sona gider,0 ile başa, 0.25 ile de çeyrek
+        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeSlider")).sendKeys("1");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeSlider")).sendKeys("0");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.findElement(AppiumBy.iOSClassChain("**/XCUIElementTypeSlider")).sendKeys("0.25");
+    }
 }
